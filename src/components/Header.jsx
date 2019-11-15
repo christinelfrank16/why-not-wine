@@ -11,7 +11,7 @@ function Header(){
   };
   return (
     <div>
-      <nav className="navbar fixed-top navbar-expand-lg" style={headerStyle}>
+      <nav className="navbar fixed-top navbar-expand-lg navbar-dark" style={headerStyle}>
         <Link style={textColor} className="navbar-brand" to="/">Why Not Wine</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
