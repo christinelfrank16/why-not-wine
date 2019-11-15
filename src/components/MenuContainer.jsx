@@ -10,6 +10,7 @@ function MenuContainer(props){
   };
   var imgColWidth = {
     maxWidth: '250px',
+    minWidth: '100px',
     padding: '0',
     margin: '0'
   };
@@ -36,7 +37,7 @@ function MenuContainer(props){
         <div className='col' style={imgColWidth}>
           <img style={imgStyling} src={SideImg}/>
         </div>
-        <div className='col-auto' style={otherColWidth}>
+        <div className='col' style={otherColWidth}>
           <h1 style={titleStyling}><span style={titleSpanStyling}>{props.name}</span></h1>
           {props.content}
         </div>
