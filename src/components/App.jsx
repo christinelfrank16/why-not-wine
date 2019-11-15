@@ -2,6 +2,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
+import WineList from './WineList';
+import FoodList from './FoodList';
+import UpdateFoodControl from './UpdateFoodControl';
+import AddWineControl from './AddWineControl';
 
 
 function App() {
