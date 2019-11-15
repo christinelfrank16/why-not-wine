@@ -25,7 +25,7 @@ function FeaturedWinesCarousel(){
     maxHeight: '600px',
     width: '100%',
     objectFit: 'contain'
-  }
+  };
   return (
     <div id="wineCarousel" className="carousel slide" data-ride="carousel" data-wrap="true" style={carouselStyle}>
       <div className="carousel-inner" style={maxHeightStyle}>

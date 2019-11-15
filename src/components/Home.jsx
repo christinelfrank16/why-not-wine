@@ -27,10 +27,10 @@ function Home(){
   var pictColStyling = {
     margin: '0',
     padding: '0'
-  }
+  };
   var spaceHeight = {
     height: 200
-  }
+  };
   return(
     <div>
       <Logo/>

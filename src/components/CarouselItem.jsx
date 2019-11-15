@@ -6,7 +6,7 @@ function CarouselItem(props) {
     maxHeight: '600px',
     width: '100%',
     objectFit: 'contain'
-  }
+  };
   return (
     <div className="carousel-item">
       <img style={heightStyle} className="d-block w-100" src={props.img} alt={props.alt} />
