@@ -35,6 +35,9 @@ function WineItem(props){
     marginTop: 'auto',
     marginBottom: 'auto'
   };
+  var textStyling = {
+    margin: '0'
+  };
   return(
     <div className="card" style={cardStyle}>
       <div className="row no-gutter">
@@ -53,7 +56,7 @@ function WineItem(props){
               <div className='col'>
                 <div style={contTypeStyle}>
                   <img src={containerTypeicon()} alt="Wine container icon" style={imgStyle} />
-                  <p>{props.amountLeft}</p>
+                  <p style={textStyling}>{props.amountLeft}</p>
                 </div>
                 <p className="card-text">{props.type}</p>
                 <p className="card-text">{props.price}</p>
