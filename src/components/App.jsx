@@ -9,8 +9,11 @@ import AddWineControl from './AddWineControl';
 
 
 function App() {
+  var appStyle = {
+    backgroundColor: '#520709'
+  }
   return (
-    <div>
+    <div style={appStyle}>
       <Header />
       <Switch>
         <Route exact path='/' component={Home} />

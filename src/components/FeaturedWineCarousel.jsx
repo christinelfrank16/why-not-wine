@@ -15,11 +15,22 @@ function FeaturedWinesCarousel(){
       alt: 'A red wine near some walnuts'
     }
   ];
+  var carouselStyle = {
+    width: '70%'
+  };
+  var maxHeightStyle = {
+    maxHeight: '600px'
+  };
+  var heightStyle = {
+    maxHeight: '600px',
+    width: '100%',
+    objectFit: 'contain'
+  }
   return (
-    <div id="wineCarousel" className="carousel slide" data-ride="carousel" data-wrap="true">
-      <div className="carousel-inner">
+    <div id="wineCarousel" className="carousel slide" data-ride="carousel" data-wrap="true" style={carouselStyle}>
+      <div className="carousel-inner" style={maxHeightStyle}>
         <div className="carousel-item active">
-          <img className="d-block w-100" src={wine1} alt='Wine with food' />
+          <img style={heightStyle} className="d-block w-100" src={wine1} alt='Wine with food' />
         </div>
         {items.map((item, index) =>
           <CarouselItem img={item.src} alt={item.alt} key={index} />
