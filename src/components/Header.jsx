@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Header(){
   return (
     <div>
@@ -13,10 +14,10 @@ function Header(){
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link className="nav-link" href="/wine">Wine List</Link>
+              <Link className="nav-link" to="/wine">Wine List</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/food">Food Menu</Link>
+              <Link className="nav-link" to="/food">Food Menu</Link>
             </li>
           </ul>
         </div>
