@@ -49,9 +49,9 @@ function WineItem(props){
             <h5 className="card-title">{props.name}</h5>
             <div className='row'>
               <div className='col-auto'>
-                <p className="card-text">Type</p>
-                <p className="card-text">Price</p>
-                <p className="card-text">Container</p>
+                <p className="card-text">Type:</p>
+                <p className="card-text">Price:</p>
+                <p className="card-text">Container:</p>
               </div>
               <div className='col'>
                 <div style={contTypeStyle}>
