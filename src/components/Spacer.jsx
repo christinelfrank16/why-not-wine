@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Spacer(prop){
   var heightStyle = {
     height: `${prop.height}px`
-  }
+  };
   return(
     <div style={heightStyle}></div>
   );
@@ -12,6 +12,6 @@ function Spacer(prop){
 
 Spacer.propTypes = {
   height: PropTypes.number
-}
+};
 
 export default Spacer;
