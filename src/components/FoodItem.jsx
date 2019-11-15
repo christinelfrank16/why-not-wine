@@ -21,7 +21,8 @@ function FoodItem(props) {
     marginRight: 'auto'
   };
   var spanStyle = {
-    background: 'rgba(0, 0, 0, 0.8)'
+    background: 'rgba(0, 0, 0, 0.8)',
+    padding: '2px 5px'
   };
   return (
     <div style={pictStyle}>
