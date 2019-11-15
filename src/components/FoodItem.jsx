@@ -16,10 +16,12 @@ function FoodItem(props) {
   };
   var pictStyle = {
     padding: '8px',
-    width: 'inherit'
+    width: '300px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
   };
   var spanStyle = {
-    background: 'rgba(0, 0, 0, 0.6)'
+    background: 'rgba(0, 0, 0, 0.8)'
   };
   return (
     <div style={pictStyle}>

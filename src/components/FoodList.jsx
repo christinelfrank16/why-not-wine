@@ -3,6 +3,7 @@ import FoodItem from './FoodItem';
 import CheesePlatter from '../assets/images/cheesePlatter.jpg';
 import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
 import ComboPlate from '../assets/images/comboPlate.jpg';
+import FruitPlatter from '../assets/images/fruitPlatter.jpg';
 
 function FoodList(){
   var foods = [
@@ -20,6 +21,11 @@ function FoodList(){
       name: 'Combo Plate',
       price: '$7.25',
       img: ComboPlate
+    },
+    {
+      name: 'Fruit Platter',
+      price: '$5.95',
+      img: FruitPlatter
     }
   ];
   var list1 = foods.splice(0, Math.floor(foods.length/3));
@@ -28,10 +34,14 @@ function FoodList(){
     display: 'flex',
     flexFlow: 'column wrap',
     alignContent: 'stretch',
-    width: '100%'
+    width: '100%',
+    margin: '0'
   };
+  var rowStyle = {
+    padding: '0 25px'
+  }
   return(
-    <div className='row'>
+    <div className='row' style={rowStyle}>
       <div className='col' style={flex}>
         {list1.map((item, index) => 
           <FoodItem name={item.name} price={item.price} img={item.img} key={index}/>
