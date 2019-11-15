@@ -29,7 +29,7 @@ function WineItem(props){
   };
   var cardStyle = {
     backgroundColor: 'rgba(255,255,255,0.6)',
-    margin: '5px'
+    margin: '10px 20px'
   };
   var alignImgStyle = {
     marginTop: 'auto',
