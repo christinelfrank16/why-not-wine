@@ -29,7 +29,7 @@ function MenuContainer(props){
     marginLeft: '15%',
     marginTop: '10px',
     fontFamily: 'Fredericka the Great, cursive'
-  }
+  };
   return(
     <div>
       <div className='row'>
@@ -37,8 +37,8 @@ function MenuContainer(props){
           <img style={imgStyling} src={SideImg}/>
         </div>
         <div className='col-auto' style={otherColWidth}>
+          <h1 style={titleStyling}><span style={titleSpanStyling}>{props.name}</span></h1>
           {props.content}
-        <h1 style={titleStyling}><span style={titleSpanStyling}>{props.name}</span></h1>
         </div>
       </div>
     </div>
