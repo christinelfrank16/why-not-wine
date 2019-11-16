@@ -33,8 +33,8 @@ function NewWineForm(){
           <label htmlFor="container">Container Type</label>
           <select style={width} className="form-control" id="container">
             <option>Select</option>
-            <option>Bottle</option>
-            <option>Keg</option>
+            <option>bottle</option>
+            <option>keg</option>
           </select>
         </div>
         <div className="form-group">
