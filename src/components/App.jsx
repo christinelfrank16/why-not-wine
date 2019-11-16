@@ -13,7 +13,8 @@ import WineDetails from './WineDetails';
 
 function App() {
   var appStyle = {
-    backgroundColor: '#520709'
+    backgroundColor: '#520709',
+    minHeight: '100vh'
   };
   var spaceHeight = {
     height: 56

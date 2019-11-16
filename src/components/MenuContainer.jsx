@@ -5,7 +5,7 @@ import SideImg from '../assets/images/wineListSideImg.jpg';
 function MenuContainer(props){
   var imgStyling = {
     width: 'inherit',
-    height: '100vh',
+    minHeight: '100vh',
     objectFit: 'cover'
   };
   var imgColWidth = {
