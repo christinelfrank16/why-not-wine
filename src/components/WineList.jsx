@@ -1,5 +1,6 @@
 import React from 'react';
 import WineItem from './WineItem';
+import { Route } from 'react-router-dom';
 
 
 function WineList() {
@@ -34,6 +35,7 @@ function WineList() {
       {wines.map((wine, index) => 
         <WineItem name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} key={index}/>
       )}
+    {/* { wines.map(wine => <Route path={`${match.path}/:topicId`} render={() => <Paragraph para={content[wine]} />} />) } */}
     </div>
   );
 }
