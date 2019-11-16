@@ -39,7 +39,7 @@ function FoodList(){
   };
   var rowStyle = {
     padding: '0 25px'
-  }
+  };
   return(
     <div className='row' style={rowStyle}>
       <div className='col' style={flex}>
