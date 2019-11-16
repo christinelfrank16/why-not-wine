@@ -8,21 +8,25 @@ import FruitPlatter from '../assets/images/fruitPlatter.jpg';
 function FoodList(){
   var foods = [
     {
+      id: 1,
       name: 'Cheese Platter',
       price: '$5.99',
       img: CheesePlatter
     },
     {
+      id: 2,
       name: 'Goldfish Bowl',
       price: '$3.49',
       img: GoldfishBowl
     },
     {
+      id: 3,
       name: 'Combo Plate',
       price: '$7.25',
       img: ComboPlate
     },
     {
+      id: 4,
       name: 'Fruit Platter',
       price: '$5.95',
       img: FruitPlatter
