@@ -1,11 +1,11 @@
 import React from 'react';
 import WineItem from './WineItem';
-import { Route } from 'react-router-dom';
 
 
 function WineList() {
   var wines = [
     {
+      id: '1',
       name: 'Petit Reserve Pinot Noir',
       type: 'Pinot Noir',
       color: 'red',
@@ -14,6 +14,7 @@ function WineList() {
       amountLeft: '15 bottles'
     },
     {
+      id: '2',
       name: 'Beurré Chardonnay',
       type: 'Chardonnay',
       color: 'white',
@@ -22,6 +23,7 @@ function WineList() {
       amountLeft: '9 bottles'
     },
     {
+      id: '3',
       name: 'Epicuro Primitivo di Manduria',
       type: 'Primitivo',
       color: 'red',
@@ -33,9 +35,8 @@ function WineList() {
   return (
     <div>
       {wines.map((wine, index) => 
-        <WineItem name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} key={index}/>
+        <WineItem id={wine.id} name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} key={index}/>
       )}
-    {/* { wines.map(wine => <Route path={`${match.path}/:topicId`} render={() => <Paragraph para={content[wine]} />} />) } */}
     </div>
   );
 }

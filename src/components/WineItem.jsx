@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link,Route } from 'react-router-dom';
 import WhiteWineIcon from '../assets/images/wine-glass-icon-white.png';
 import RedWineIcon from '../assets/images/wine-glass-icon-red.png';
 import BottleIcon from '../assets/images/bottle-icon.png';
 import KegIcon from '../assets/images/keg-icon.jpg';
+import WineDetails from './WineDetails';
 
 function WineItem(props){
   var wineTypeicon = function(){
@@ -47,8 +48,8 @@ function WineItem(props){
         </div>
         <div className="col">
           <div className="card-body">
-            <h5 className="card-title">{props.name}</h5>
-            {/* <Link to={`${match.url}/${props.name}`}><h5 className="card-title">{props.name}</h5></Link> */}
+            {/* <h5 className="card-title">{props.name}</h5> */}
+            <Link to={`/wine/${props.id}`}><h5 className="card-title">{props.name}</h5></Link>
             <div className='row'>
               <div className='col-auto'>
                 <p className="card-text">Type:</p>
@@ -73,6 +74,7 @@ function WineItem(props){
 }
 
 WineItem.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
   color: PropTypes.string,
