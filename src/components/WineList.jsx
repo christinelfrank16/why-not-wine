@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import WineItem from './WineItem';
 
 
@@ -32,8 +33,14 @@ function WineList() {
       amountLeft: '24 oz'
     }
   ];
+  var middle = {
+    marginLeft: '20px'
+  };
   return (
     <div>
+      <div style={middle}>
+        <Link to='/new-wine'>Add A New Wine</Link>
+      </div>
       {wines.map((wine, index) => 
         <WineItem id={wine.id} name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} key={index}/>
       )}

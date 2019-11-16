@@ -81,7 +81,7 @@ function WineDetails({match}){
   const wine = wines.find(({ id }) => id === match.params.id);
   const wineFoods = Object.keys(wine.food).map(function(key){
     const value = wine.food[key];
-    return foods.find((food) => value === food.id)
+    return foods.find((food) => value === food.id);
   });
 
   // Including grape varietals, origin, tasting profile, and suggested menu item(s) for pairing.

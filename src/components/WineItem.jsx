@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link,Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import WhiteWineIcon from '../assets/images/wine-glass-icon-white.png';
 import RedWineIcon from '../assets/images/wine-glass-icon-red.png';
 import BottleIcon from '../assets/images/bottle-icon.png';
 import KegIcon from '../assets/images/keg-icon.jpg';
-import WineDetails from './WineDetails';
 
 function WineItem(props){
   var wineTypeicon = function(){

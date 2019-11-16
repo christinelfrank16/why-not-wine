@@ -8,7 +8,7 @@ import Spacer from './Spacer';
 import Error404 from './Error404';
 import WineDetails from './WineDetails';
 // import UpdateFoodControl from './UpdateFoodControl';
-// import AddWineControl from './AddWineControl';
+import NewWineControl from './NewWineControl';
 
 
 function App() {
@@ -27,10 +27,10 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/wine' component={WinePage} />
         <Route exact path='/wine/:id' component={WineDetails} />
+        <Route exact path='/new-wine' component={NewWineControl} />
         <Route exact path='/food' component={FoodPage} />
         <Route component={Error404} />
-        {/* <Route exact path='/update-food' component={UpdateFoodControl} />
-        <Route exact path='/wine/new-wine' component={AddWineControl} /> */}
+        {/* <Route exact path='/update-food' component={UpdateFoodControl} /> */}
       </Switch>
     </div>
   );
