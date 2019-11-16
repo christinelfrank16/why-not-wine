@@ -5,6 +5,7 @@ import Home from './Home';
 import WinePage from './WinePage';
 import FoodPage from './FoodPage';
 import Spacer from './Spacer';
+import Error404 from './Error404';
 // import UpdateFoodControl from './UpdateFoodControl';
 // import AddWineControl from './AddWineControl';
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/wine' component={WinePage} />
         <Route exact path='/food' component={FoodPage} />
+        <Route component={Error404} />
         {/* <Route exact path='/update-food' component={UpdateFoodControl} />
         <Route exact path='/wine/new-wine' component={AddWineControl} /> */}
         {/* <Route exact path='/' component={Home} />    >>>>>>> Detail view route? */}
