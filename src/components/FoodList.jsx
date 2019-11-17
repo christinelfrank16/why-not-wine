@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FoodItem from './FoodItem';
 import CheesePlatter from '../assets/images/cheesePlatter.jpg';
 import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
@@ -44,22 +45,30 @@ function FoodList(){
   var rowStyle = {
     padding: '0 25px'
   };
+  var middle = {
+    marginLeft: '20px'
+  };
   return(
-    <div className='row' style={rowStyle}>
-      <div className='col' style={flex}>
-        {list1.map((item, index) => 
-          <FoodItem name={item.name} price={item.price} img={item.img} key={index}/>
-        )}
+    <div>
+      <div style={middle}>
+        <Link to='/update-food'>Update the Food Menu</Link>
       </div>
-      <div className='col' style={flex}>
-        {list2.map((item, index) =>
-          <FoodItem name={item.name} price={item.price} img={item.img} key={index} />
-        )}
-      </div>
-      <div className='col' style={flex}>
-        {foods.map((item, index) =>
-          <FoodItem name={item.name} price={item.price} img={item.img} key={index} />
-        )}
+      <div className='row' style={rowStyle}>
+        <div className='col' style={flex}>
+          {list1.map((item, index) => 
+            <FoodItem name={item.name} price={item.price} img={item.img} key={index}/>
+          )}
+        </div>
+        <div className='col' style={flex}>
+          {list2.map((item, index) =>
+            <FoodItem name={item.name} price={item.price} img={item.img} key={index} />
+          )}
+        </div>
+        <div className='col' style={flex}>
+          {foods.map((item, index) =>
+            <FoodItem name={item.name} price={item.price} img={item.img} key={index} />
+          )}
+        </div>
       </div>
     </div>
   );
