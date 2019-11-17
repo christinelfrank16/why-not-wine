@@ -21,6 +21,25 @@ function WineItem(props){
       return BottleIcon;
     }
   };
+  var decButtonOptions = function(){
+    if (props.container === 'keg') {
+      return(
+        <div style={alignStyle} className='col-auto'>
+          <p>Decrement</p>
+          <button type="button" className="btn btn-light">2oz</button>
+          <button type="button" className="btn btn-secondary">4oz</button>
+          <button type="button" className="btn btn-dark">6oz</button>
+        </div>
+      );
+    } else {
+      return (
+        <div style={alignStyle} className='col-auto'>
+          <p>Empty Bottle</p>
+          <button type="button" className="btn btn-secondary">Confirm</button>
+        </div>
+      );
+    }
+  }
   var contTypeStyle = {
     float: 'right',
     textAlign: 'center'
@@ -38,6 +57,9 @@ function WineItem(props){
   };
   var textStyling = {
     margin: '0'
+  };
+  var alignStyle = {
+    textAlign: 'center'
   };
   return(
     <div className="card" style={cardStyle}>
@@ -64,6 +86,7 @@ function WineItem(props){
                 <p className="card-text">{props.price}</p>
                 <p className="card-text">{props.container}</p>
               </div>
+              {decButtonOptions()}
             </div>
           </div>
         </div>
