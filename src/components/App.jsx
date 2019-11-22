@@ -120,7 +120,7 @@ class App extends React.Component {
       ]
     };
     this.handleUserPriviledgeUpdate = this.handleUserPriviledgeUpdate.bind(this);
-    this.wineDetailFoodListHelper = this.wineDetailFoodListHelper.bind(this);
+    this.wineDetailObjectHelper = this.wineDetailObjectHelper.bind(this);
   }
 
   handleUserPriviledgeUpdate(newValue){
@@ -128,12 +128,15 @@ class App extends React.Component {
   }
 
   
-  wineDetailFoodListHelper(wineDetails){
-    const wineFoods = Object.keys(wineDetails.food).map((key) => {
-      const value = wineDetails.food[key];
+  wineDetailObjectHelper(id){
+    let wineObj = {};
+    wineObj.wine = this.state.wineList.find((wine) => wine.id == id);
+    wineObj.wineDetails = this.state.wineDetails.find((details) => details.wineId === id);
+    wineObj.wineFoods = Object.keys(wineObj.wineDetails.food).map((key) => {
+      const value = wineObj.wineDetails.food[key];
       return this.state.foodList.find((food) => value === food.id);
     });
-    return wineFoods;
+    return wineObj;
   }
 
   render(){
@@ -151,7 +154,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={() => <Home isAdmin={this.state.isAdmin} onUserPriviledgeUpdate={this.handleUserPriviledgeUpdate}/>}/>
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} wineList={this.state.wineList} />}/>
-          <Route exact path='/wine/:id' render={(routerProps) => <WineDetails selectedWine={this.state.wineList[routerProps.match.params.id]} selectedWineDetails={this.state.wineDetails[routerProps.match.params.id]} wineFoods={this.wineDetailFoodListHelper(this.state.wineDetails[routerProps.match.params.id])} />} />
+          <Route exact path='/wine/:id' render={(routerProps) => <WineDetails selectedWine={this.wineDetailObjectHelper(routerProps.match.params.id).wine} selectedWineDetails={this.wineDetailObjectHelper(routerProps.match.params.id).wineDetails} wineFoods={this.wineDetailObjectHelper(routerProps.match.params.id).wineFoods} />} />
           <Route exact path='/new-wine'>
             {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}
           </Route>/>

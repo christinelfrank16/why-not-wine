@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FoodItem from './FoodItem';
 
-function WineDetails(props){
-  console.log(props);
-  
-  // Including grape varietals, origin, tasting profile, and suggested menu item(s) for pairing.
+function WineDetails(props){ 
   var detailStyling = {
     backgroundColor: 'rgba(255,255,255,0.6)',
     margin: '20px 20px',
