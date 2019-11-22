@@ -45,7 +45,9 @@ LinkedIn: https://www.linkedin.com/in/christine-frank/
 * As an employee, I want to see wines with less than 16oz tasting remaining if in a keg, or if only 2 bottles are left.
 * As an employee, I want to see at least 1 recommended replacement wine (max 3) based on the wine profile per wine that is low
 
-<img src='src/assets/references/Why-Not-Wine_Structure.png' style="display:block; max-width:700px; margin-left:auto; margin-right:auto;">
+<img src='src/assets/references/Why-Not-Wine_Route-Structure.png' style="display:block; max-width:700px; margin-left:auto; margin-right:auto;">
+<br>
+<img src='src/assets/references/Why-Not-Wine_Data-Structure.png' style="display:block; max-width:700px; margin-left:auto; margin-right:auto;">
 
 ## Technologies Used
 
