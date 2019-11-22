@@ -43,7 +43,7 @@ function Home(props){
       <div className='row'>
         <div style={txtColStyling} className='col-5'>
           <div style={switchStyle}>
-            <LoginSwitch onUserPriviledgeUpdate={props.onUserPriviledgeUpdate}/>
+            <LoginSwitch isAdmin={props.isAdmin} onUserPriviledgeUpdate={props.onUserPriviledgeUpdate}/>
           </div>
           <div style={descStyle}>
             <Description content={description.content} />
@@ -59,7 +59,8 @@ function Home(props){
 }
 
 Home.propTypes = {
-  onUserPriviledgeUpdate: PropTypes.func
+  onUserPriviledgeUpdate: PropTypes.func,
+  isAdmin: PropTypes.bool
 };
 
 export default Home;
