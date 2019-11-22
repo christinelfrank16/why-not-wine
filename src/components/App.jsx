@@ -141,7 +141,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={() => <Home isAdmin={this.state.isAdmin} onUserPriviledgeUpdate={this.handleUserPriviledgeUpdate}/>}/>
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} wineList={this.state.wineList} />}/>
-          <Route exact path='/wine/:id' component={WineDetails} />
+          <Route exact path='/wine/:id' render={(props) => <WineDetails selectedWine={this.state.wineList[props.match.id]} selectedWineDetails={this.state.wineDetails[props.match.id]} foodList={this.state.foodList} />} />
           <Route exact path='/new-wine'>
             {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}
           </Route>/>

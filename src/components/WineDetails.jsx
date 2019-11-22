@@ -1,88 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import noir from '../assets/images/TJ-Petit-Reserve-Pinot-Noir.jpg';
-import chard from '../assets/images/Beurre-Chardonnay.jpg';
-import epicuro from '../assets/images/epicuro-mandura.jpg';
-import CheesePlatter from '../assets/images/cheesePlatter.jpg';
-import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
-import ComboPlate from '../assets/images/comboPlate.jpg';
-import FruitPlatter from '../assets/images/fruitPlatter.jpg';
 import FoodItem from './FoodItem';
 
-function WineDetails({match}){
-  var wines = [
-    {
-      id: '1',
-      name: 'Petit Reserve Pinot Noir',
-      type: 'Pinot Noir',
-      varietal: 'Pinot',
-      origin: 'Sonoma County’s Russian River Valley',
-      profile: 'Light notes of toasted oak and juicy flavors of cherry and raspberry',
-      food: {
-        1: 2,
-        2: 3
-      },
-      img: noir
-    },
-    {
-      id: '2',
-      name: 'Beurré Chardonnay',
-      type: 'Chardonnay',
-      varietal: 'Chardonnay',
-      origin: 'California',
-      profile: 'Aromas of ripe pear, vanilla, and toasted baguettes skillfully play with its light, toasted-oak notes and creamy mouthfeel.',
-      food: {
-        1: 1,
-        2: 2,
-        3: 4
-      },
-      img: chard
-    },
-    {
-      id: '3',
-      name: 'Epicuro Primitivo di Manduria',
-      type: 'Primitivo',
-      varietal: 'Zinfandel',
-      origin: 'Apulia Region, Italy',
-      profile: 'Begins with an aromatic nose full of sour cherry and berry flavors, licorice and vanilla plus some intriguing spice notes, and shows lots of sweet and sour cherry fruit wrapped up in a soft mouthfeel',
-      food: {
-        1: 1,
-        2: 2,
-        3: 3
-      },
-      img: epicuro
-    }
-  ];
-  var foods = [
-    {
-      id: 1,
-      name: 'Cheese Platter',
-      price: '$5.99',
-      img: CheesePlatter
-    },
-    {
-      id: 2,
-      name: 'Goldfish Bowl',
-      price: '$3.49',
-      img: GoldfishBowl
-    },
-    {
-      id: 3,
-      name: 'Combo Plate',
-      price: '$7.25',
-      img: ComboPlate
-    },
-    {
-      id: 4,
-      name: 'Fruit Platter',
-      price: '$5.95',
-      img: FruitPlatter
-    }
-  ];
-  const wine = wines.find(({ id }) => id === match.params.id);
-  const wineFoods = Object.keys(wine.food).map(function(key){
+function WineDetails(props){
+  console.log(props);
+  const wineFoods = Object.keys(props.selectedWineDetails.food).map(function(key){
     const value = wine.food[key];
-    return foods.find((food) => value === food.id);
+    return props.foodList.find((food) => value === food.id);
   });
 
   // Including grape varietals, origin, tasting profile, and suggested menu item(s) for pairing.
@@ -132,9 +57,9 @@ function WineDetails({match}){
     <div style={detailStyling}>
       <Link style={linkStyling} to='/wine'>Back to Wine Listing</Link>
       <div style={topStyling}>
-        <h2>{wine.name}</h2>
-        <h4>{wine.origin}</h4>
-        <img style={imgStyling} src={wine.img} />
+        <h2>{props.selectedWine.name}</h2>
+        <h4>{props.selectedWineDetails.origin}</h4>
+        <img style={imgStyling} src={props.selectedWineDetails.img} />
       </div>
       <div style={colStyling}>
         <div style={borders} className='row'>
@@ -144,7 +69,7 @@ function WineDetails({match}){
                 <h6>Type</h6>
               </div>
               <div className='col'>
-                {wine.type}
+                {props.selectedWine.type}
               </div>
             </div>
             <div className='row'>
@@ -152,13 +77,13 @@ function WineDetails({match}){
                 <h6>Varietal</h6>
               </div>
               <div className='col'>
-                {wine.varietal}
+                {props.selectedWineDetails.varietal}
               </div>
             </div>
           </div>
           <div className='col'>
             <h6>Tasting Profile</h6>
-            <p>{wine.profile}</p>
+            <p>{props.selectedWineDetails.profile}</p>
           </div>
         </div>
       </div>
@@ -170,6 +95,12 @@ function WineDetails({match}){
       </div>
     </div>
   );
+}
+
+WineDetails.propTypes = {
+  selectedWine: PropTypes.object,
+  selectedWineDetails: PropTypes.object,
+  foodList: PropTypes.array
 }
 
 export default WineDetails;
