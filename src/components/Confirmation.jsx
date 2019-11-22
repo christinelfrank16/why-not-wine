@@ -2,7 +2,7 @@ import React from 'react';
 
 function Confirmation(){
   return(
-    <div className="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="confirmTitle" aria-hidden="true">
+    <div className="modal fade" id="confirm" tabIndex="-1" role="dialog" aria-labelledby="confirmTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           <div className="modal-header">

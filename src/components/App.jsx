@@ -127,6 +127,9 @@ class App extends React.Component {
     this.setState({ isAdmin: newValue.target.checked});
   }
 
+  handleNewWineFormSubmit(wineAndDetails){
+    
+  }
   
   wineDetailObjectHelper(id){
     let wineObj = {};
