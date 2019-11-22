@@ -6,7 +6,7 @@ import FoodItem from './FoodItem';
 function WineDetails(props){
   console.log(props);
   const wineFoods = Object.keys(props.selectedWineDetails.food).map(function(key){
-    const value = wine.food[key];
+    const value = props.selectedWineDetails.food[key];
     return props.foodList.find((food) => value === food.id);
   });
 
