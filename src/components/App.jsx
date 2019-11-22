@@ -143,7 +143,7 @@ class App extends React.Component {
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} />}/>
           <Route exact path='/wine/:id' component={WineDetails} />
           <Route exact path='/new-wine' component={NewWineControl} />
-          <Route exact path='/food' component={FoodPage} />
+          <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} />} />
           <Route exact path='/update-food' component={UpdateFoodControl} />
           <Route component={Error404} />
         </Switch>

@@ -73,7 +73,6 @@ function WineItem(props){
         </div>
         <div className="col">
           <div className="card-body">
-            {/* <h5 className="card-title">{props.name}</h5> */}
             <Link to={`/wine/${props.id}`}><h5 className="card-title">{props.name}</h5></Link>
             <div className='row'>
               <div className='col-auto'>

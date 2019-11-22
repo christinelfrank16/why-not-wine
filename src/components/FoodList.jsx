@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FoodItem from './FoodItem';
 import CheesePlatter from '../assets/images/cheesePlatter.jpg';
@@ -6,7 +7,7 @@ import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
 import ComboPlate from '../assets/images/comboPlate.jpg';
 import FruitPlatter from '../assets/images/fruitPlatter.jpg';
 
-function FoodList(){
+function FoodList(props){
   var foods = [
     {
       id: 1,
@@ -48,11 +49,21 @@ function FoodList(){
   var middle = {
     marginLeft: '20px'
   };
+
+  function adminLink() {
+    if (props.isAdmin) {
+      return (
+        <div style={middle}>
+          <Link to='/update-food'>Update the Food Menu</Link>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
   return(
     <div>
-      <div style={middle}>
-        <Link to='/update-food'>Update the Food Menu</Link>
-      </div>
+      {adminLink()}
       <div className='row' style={rowStyle}>
         <div className='col' style={flex}>
           {list1.map((item, index) => 
@@ -72,6 +83,10 @@ function FoodList(){
       </div>
     </div>
   );
+}
+
+FoodList.propTypes = {
+  isAdmin: PropTypes.bool
 }
 
 export default FoodList;
