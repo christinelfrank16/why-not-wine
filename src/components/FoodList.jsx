@@ -2,38 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FoodItem from './FoodItem';
-import CheesePlatter from '../assets/images/cheesePlatter.jpg';
-import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
-import ComboPlate from '../assets/images/comboPlate.jpg';
-import FruitPlatter from '../assets/images/fruitPlatter.jpg';
 
 function FoodList(props){
-  var foods = [
-    {
-      id: 1,
-      name: 'Cheese Platter',
-      price: '$5.99',
-      img: CheesePlatter
-    },
-    {
-      id: 2,
-      name: 'Goldfish Bowl',
-      price: '$3.49',
-      img: GoldfishBowl
-    },
-    {
-      id: 3,
-      name: 'Combo Plate',
-      price: '$7.25',
-      img: ComboPlate
-    },
-    {
-      id: 4,
-      name: 'Fruit Platter',
-      price: '$5.95',
-      img: FruitPlatter
-    }
-  ];
+  var foods = props.foodList.slice();
   var list1 = foods.splice(0, Math.floor(foods.length/3));
   var list2 = foods.splice(0, Math.floor(foods.length/2));
   var flex = {
@@ -86,7 +57,8 @@ function FoodList(props){
 }
 
 FoodList.propTypes = {
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  foodList: PropTypes.array
 };
 
 export default FoodList;

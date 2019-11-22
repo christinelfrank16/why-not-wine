@@ -145,7 +145,7 @@ class App extends React.Component {
           <Route exact path='/new-wine'>
             {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}
           </Route>/>
-          <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} />} />
+          <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} foodList={this.state.foodList} />} />
           <Route exact path='/update-food'>
             {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl />}  
           </Route>
