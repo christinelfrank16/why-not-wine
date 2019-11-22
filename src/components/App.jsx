@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 import WinePage from './WinePage';
@@ -142,9 +142,13 @@ class App extends React.Component {
           <Route exact path='/' render={() => <Home isAdmin={this.state.isAdmin} onUserPriviledgeUpdate={this.handleUserPriviledgeUpdate}/>}/>
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} />}/>
           <Route exact path='/wine/:id' component={WineDetails} />
-          <Route exact path='/new-wine' component={NewWineControl} />
+          <Route exact path='/new-wine'>
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}
+          </Route>/>
           <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} />} />
-          <Route exact path='/update-food' component={UpdateFoodControl} />
+          <Route exact path='/update-food'>
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl />}  
+          </Route>
           <Route component={Error404} />
         </Switch>
       </div>
