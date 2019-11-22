@@ -5,11 +5,7 @@ import FoodItem from './FoodItem';
 
 function WineDetails(props){
   console.log(props);
-  const wineFoods = Object.keys(props.selectedWineDetails.food).map(function(key){
-    const value = props.selectedWineDetails.food[key];
-    return props.foodList.find((food) => value === food.id);
-  });
-
+  
   // Including grape varietals, origin, tasting profile, and suggested menu item(s) for pairing.
   var detailStyling = {
     backgroundColor: 'rgba(255,255,255,0.6)',
@@ -89,7 +85,7 @@ function WineDetails(props){
       </div>
       <h3 style={topStyling}>Suggested Pairings</h3>
       <div style={flex}>
-        {wineFoods.map((item, index) => 
+        {props.wineFoods.map((item, index) => 
           <FoodItem name={item.name} price={item.price} img={item.img} key={index} />
         )}
       </div>
@@ -100,7 +96,7 @@ function WineDetails(props){
 WineDetails.propTypes = {
   selectedWine: PropTypes.object,
   selectedWineDetails: PropTypes.object,
-  foodList: PropTypes.array
+  wineFoods: PropTypes.array
 }
 
 export default WineDetails;
