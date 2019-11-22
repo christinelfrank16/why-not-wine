@@ -36,7 +36,7 @@ function Home(props){
   var switchStyle = {
     float: 'right',
     marginRight: '30px',
-  }
+  };
   return(
     <div>
       <Logo/>
@@ -60,6 +60,6 @@ function Home(props){
 
 Home.propTypes = {
   onUserPriviledgeUpdate: PropTypes.func
-}
+};
 
 export default Home;

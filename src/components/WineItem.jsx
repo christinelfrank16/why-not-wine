@@ -39,7 +39,7 @@ function WineItem(props){
         </div>
       );
     }
-  }
+  };
   var contTypeStyle = {
     float: 'right',
     textAlign: 'center'

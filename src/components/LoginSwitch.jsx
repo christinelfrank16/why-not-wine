@@ -8,10 +8,10 @@ function LoginSwitch(props){
   var textAlign = {
     textAlign: 'center',
     color: '#d1d1d1'
-  }
+  };
   return(
-  <div style={textAlign}>
-    <style jsx>{`
+    <div style={textAlign}>
+      <style jsx>{`
       .switch {
         position: relative;
         display: inline-block;
@@ -78,6 +78,6 @@ function LoginSwitch(props){
 
 LoginSwitch.propTypes = {
   onUserPriviledgeUpdate: PropTypes.func
-}
+};
 
 export default LoginSwitch;
