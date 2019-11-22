@@ -60,7 +60,7 @@ function FoodList(props){
     } else {
       return null;
     }
-  };
+  }
   return(
     <div>
       {adminLink()}
@@ -87,6 +87,6 @@ function FoodList(props){
 
 FoodList.propTypes = {
   isAdmin: PropTypes.bool
-}
+};
 
 export default FoodList;

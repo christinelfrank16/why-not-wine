@@ -12,6 +12,6 @@ function WinePage(props){
 
 WinePage.propTypes = {
   isAdmin: PropTypes.bool
-}
+};
 
 export default WinePage;

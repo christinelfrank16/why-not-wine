@@ -12,6 +12,6 @@ function FoodPage(props) {
 
 FoodPage.propTypes = {
   isAdmin: PropTypes.bool
-}
+};
 
 export default FoodPage;

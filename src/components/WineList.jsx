@@ -48,7 +48,7 @@ function WineList(props) {
     } else {
       return null;
     }
-  };
+  }
 
   return (
     <div>
@@ -62,6 +62,6 @@ function WineList(props) {
 
 WineList.propTypes = {
   isAdmin: PropTypes.bool
-}
+};
 
 export default WineList;
