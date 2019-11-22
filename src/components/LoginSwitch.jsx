@@ -67,7 +67,7 @@ function LoginSwitch(props){
       <div className="form-check">
         <span style={margin}>Patron</span>
         <label className="switch" >
-          <input id="hardware-value" type="checkbox" name="hardware"/>
+          <input id="hardware-value" type="checkbox" name="hardware" onChange={(event) => props.onUserPriviledgeUpdate(event)}/>
           <span className="slider toggle"></span>
         </label>
         <span style={margin}>Admin</span>
@@ -77,7 +77,7 @@ function LoginSwitch(props){
 }
 
 LoginSwitch.propTypes = {
-  isAdmin: PropTypes.bool
+  onUserPriviledgeUpdate: PropTypes.func
 }
 
 export default LoginSwitch;

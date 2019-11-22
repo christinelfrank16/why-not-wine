@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Logo from './Logo';
 import Description from './Description';
 import FeaturedWineCarousel from './FeaturedWineCarousel';
 import Spacer from './Spacer';
 import LoginSwitch from './LoginSwitch';
 
-function Home(){
+function Home(props){
   var description = {
     content: 'Relaxing in this busy world can be a stressful concept. This is what Why Not Wine is all about: we provide a space for you to come, relax and enjoy a favorite drink. We offer an assortment of wines to expore, ranging from exotic reds to local white ports. Come with friends or with your favorite book; this space is all about you.'
   };
@@ -42,7 +43,7 @@ function Home(){
       <div className='row'>
         <div style={txtColStyling} className='col-5'>
           <div style={switchStyle}>
-            <LoginSwitch />
+            <LoginSwitch onUserPriviledgeUpdate={props.onUserPriviledgeUpdate}/>
           </div>
           <div style={descStyle}>
             <Description content={description.content} />
@@ -55,6 +56,10 @@ function Home(){
       <Spacer height={spaceHeight.height}/>
     </div>
   );
+}
+
+Home.propTypes = {
+  onUserPriviledgeUpdate: PropTypes.func
 }
 
 export default Home;
