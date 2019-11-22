@@ -3,6 +3,7 @@ import Logo from './Logo';
 import Description from './Description';
 import FeaturedWineCarousel from './FeaturedWineCarousel';
 import Spacer from './Spacer';
+import LoginSwitch from './LoginSwitch';
 
 function Home(){
   var description = {
@@ -31,11 +32,18 @@ function Home(){
   var spaceHeight = {
     height: 200
   };
+  var switchStyle = {
+    float: 'right',
+    marginRight: '30px',
+  }
   return(
     <div>
       <Logo/>
       <div className='row'>
         <div style={txtColStyling} className='col-5'>
+          <div style={switchStyle}>
+            <LoginSwitch />
+          </div>
           <div style={descStyle}>
             <Description content={description.content} />
           </div>
