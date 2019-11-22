@@ -23,7 +23,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       isAdmin: false,
-      wines: [
+      wineList: [
         {
           id: '1',
           name: 'Petit Reserve Pinot Noir',
@@ -140,7 +140,7 @@ class App extends React.Component {
         <Spacer height={spaceHeight.height}/>
         <Switch>
           <Route exact path='/' render={() => <Home isAdmin={this.state.isAdmin} onUserPriviledgeUpdate={this.handleUserPriviledgeUpdate}/>}/>
-          <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} />}/>
+          <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} wineList={this.state.wineList} />}/>
           <Route exact path='/wine/:id' component={WineDetails} />
           <Route exact path='/new-wine'>
             {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}

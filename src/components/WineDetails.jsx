@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import noir from '../assets/images/TJ-Petit-Reserve-Pinot-Noir.jpg';
 import chard from '../assets/images/Beurre-Chardonnay.jpg';
 import epicuro from '../assets/images/epicuro-mandura.jpg';
@@ -123,8 +124,13 @@ function WineDetails({match}){
     maxHeight: '400px',
     width: 'auto'
   };
+  var linkStyling = {
+    padding: '30px',
+    color: 'black',
+  }
   return (
     <div style={detailStyling}>
+      <Link style={linkStyling} to='/wine'>Back to Wine Listing</Link>
       <div style={topStyling}>
         <h2>{wine.name}</h2>
         <h4>{wine.origin}</h4>
