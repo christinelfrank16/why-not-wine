@@ -45,7 +45,7 @@ function WineDetails(props){
   var linkStyling = {
     padding: '30px',
     color: 'black',
-  }
+  };
   return (
     <div style={detailStyling}>
       <Link style={linkStyling} to='/wine'>Back to Wine Listing</Link>
@@ -94,6 +94,6 @@ WineDetails.propTypes = {
   selectedWine: PropTypes.object,
   selectedWineDetails: PropTypes.object,
   wineFoods: PropTypes.array
-}
+};
 
 export default WineDetails;
