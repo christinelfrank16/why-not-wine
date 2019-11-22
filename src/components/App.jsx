@@ -140,7 +140,7 @@ class App extends React.Component {
         <Spacer height={spaceHeight.height}/>
         <Switch>
           <Route exact path='/' render={() => <Home onUserPriviledgeUpdate={this.handleUserPriviledgeUpdate}/>}/>
-          <Route exact path='/wine' component={WinePage} />
+          <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} />}/>
           <Route exact path='/wine/:id' component={WineDetails} />
           <Route exact path='/new-wine' component={NewWineControl} />
           <Route exact path='/food' component={FoodPage} />

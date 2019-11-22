@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import WineItem from './WineItem';
 
 
-function WineList() {
+function WineList(props) {
   var wines = [
     {
       id: '1',
@@ -36,16 +37,31 @@ function WineList() {
   var middle = {
     marginLeft: '20px'
   };
+  
+  function adminLink() {
+    if (props.isAdmin) {
+      return (
+        <div style={middle}>
+          <Link to='/new-wine'>Add A New Wine</Link>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div>
-      <div style={middle}>
-        <Link to='/new-wine'>Add A New Wine</Link>
-      </div>
+      {adminLink()}
       {wines.map((wine, index) => 
-        <WineItem id={wine.id} name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} key={index}/>
+        <WineItem id={wine.id} name={wine.name} type={wine.type} color={wine.color} price={wine.price} container={wine.container} amountLeft={wine.amountLeft} isAdmin={props.isAdmin} key={index}/>
       )}
     </div>
   );
+}
+
+WineList.propTypes = {
+  isAdmin: PropTypes.bool
 }
 
 export default WineList;

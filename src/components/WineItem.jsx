@@ -22,22 +22,26 @@ function WineItem(props){
     }
   };
   var decButtonOptions = function(){
-    if (props.container === 'keg') {
-      return(
-        <div style={alignStyle} className='col-auto'>
-          <p>Decrement</p>
-          <button type="button" className="btn btn-light">2oz</button>
-          <button type="button" className="btn btn-secondary">4oz</button>
-          <button type="button" className="btn btn-dark">6oz</button>
-        </div>
-      );
+    if(props.isAdmin){
+      if (props.container === 'keg') {
+        return(
+          <div style={alignStyle} className='col-auto'>
+            <p>Decrement</p>
+            <button type="button" className="btn btn-light">2oz</button>
+            <button type="button" className="btn btn-secondary">4oz</button>
+            <button type="button" className="btn btn-dark">6oz</button>
+          </div>
+        );
+      } else {
+        return (
+          <div style={alignStyle} className='col-auto'>
+            <p>Empty Bottle</p>
+            <button type="button" className="btn btn-secondary">Confirm</button>
+          </div>
+        );
+      }
     } else {
-      return (
-        <div style={alignStyle} className='col-auto'>
-          <p>Empty Bottle</p>
-          <button type="button" className="btn btn-secondary">Confirm</button>
-        </div>
-      );
+      return null;
     }
   };
   var contTypeStyle = {
@@ -102,7 +106,8 @@ WineItem.propTypes = {
   color: PropTypes.string,
   price: PropTypes.string,
   container: PropTypes.string,
-  amountLeft: PropTypes.string
+  amountLeft: PropTypes.string,
+  isAdmin: PropTypes.bool
 };
 
 export default WineItem;
