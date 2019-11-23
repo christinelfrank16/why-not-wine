@@ -11,7 +11,7 @@ function NewWineControl(props) {
   function handleNewWineInfoForConfirm(newWineObj){
     setValues(newWineObj);
     setShowModal(true);
-    console.log($('confirm'));
+    console.log($('confirm').modal());
     $('confirm').modal('show');
   }
 
