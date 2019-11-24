@@ -17,30 +17,20 @@ function NewWineForm(props){
     props.onNewWineCreation(
       [
         {
-          name: _name.value,
-          type: _type.value,
-          color: _color.value,
-          price: _price.value,
-          container: _container.value,
-          amountLeft: _qty.value
+          name: _name,
+          type: _type,
+          color: _color,
+          price: _price,
+          container: _container,
+          amountLeft: _qty,
         },
         {
-          varietal: _varietal.value,
-          origin: _origin.value,
-          profile: _profile.value,
+          varietal: _varietal,
+          origin: _origin,
+          profile: _profile,
           food: []
         }
       ]);
-
-    _name.value = '';
-    _type.value = '';
-    _color.value = '';
-    _price.value = '';
-    _qty.value = '';
-    _varietal.value = '';
-    _origin.value = '';
-    _profile.value = '';
-
   }
 
   var text = {
@@ -57,7 +47,7 @@ function NewWineForm(props){
       <form onSubmit={handleNewWineSubmission}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input id="name" type="text" className="form-control" ref={(input) => {_name=input;}}/>
+          <input id="name" type="text" className="form-control" ref={(input) => { _name = input; }}/>
         </div>
         <div className="form-group">
           <label htmlFor="type">Type</label>
@@ -103,6 +93,6 @@ function NewWineForm(props){
 
 NewWineForm.propTypes = {
   onNewWineCreation: PropTypes.func
-}
+};
 
 export default NewWineForm;

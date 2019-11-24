@@ -5,20 +5,18 @@ import Confirmation from './Confirmation';
 import $ from 'jquery';
 
 function NewWineControl(props) {
-  const [showModal, setShowModal] = useState(false);
-  const [confirmValues, setValues] = useState(null);
+  const [confirmValues, setValues] = useState([]);
 
   function handleNewWineInfoForConfirm(newWineObj){
+    console.log(newWineObj);
     setValues(newWineObj);
-    setShowModal(true);
-    console.log($('confirm').modal());
-    $('confirm').modal('show');
+    $('#confirm').modal('show');
   }
 
   return (
     <div className='container'>
       <NewWineForm onNewWineCreation={handleNewWineInfoForConfirm}/>
-      <Confirmation valuesToConfirm={confirmValues} updateShowModal={setShowModal} onWineConfirmed={props.onWineConfirmed}/>
+      <Confirmation valuesToConfirm={confirmValues === null ? [{}] : confirmValues} onWineConfirmed={props.onWineConfirmed}/>
     </div>
   );
 }
@@ -26,5 +24,5 @@ function NewWineControl(props) {
 
 NewWineControl.propTypes = {
   onWineConfirmed: PropTypes.func
-}
+};
 export default NewWineControl;

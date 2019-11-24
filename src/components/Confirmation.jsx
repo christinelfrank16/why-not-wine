@@ -1,27 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 function Confirmation(props){
   function confirmValues(){
     if(props.valuesToConfirm != null){
-      let html = <h3>Is this correct?</h3>;
+      $('.modal-body p').text('');
       props.valuesToConfirm.map((wineAndDetails) => {
         Object.keys(wineAndDetails).forEach((key) => {
-          html += <p>{key} : {wineAndDetails[key]}</p>
+          $('.modal-body p').append(`${key} : ${wineAndDetails[key].value}<br/>`);
         });
       });
-      return html;
     } else {
-      return null;
+      return {};
     }
   }
 
-  function confirmValues(passUpValues){
-    if(passUpValues){
+  function passUpValues(doPassValues){
+    if (doPassValues){
       props.onWineConfirmed(props.valuesToConfirm);
-      props.updateShowModal(false);
+      console.log('confirmed');
     } else {
-      props.updateShowModal(false);
+      $('#confirm').modal('hide');
     }
   }
   return(
@@ -30,14 +30,15 @@ function Confirmation(props){
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLongTitle">Please Confirm this Wine</h5>
-            <button type="button" className="close" onClick={() => confirmValues(false)} aria-label="Close">
+            <button type="button" className="close" onClick={() => passUpValues(false)} aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div className="modal-body">
             {confirmValues()}
-            <button type="button" className="btn btn-secondary" onClick={() => confirmValues(false)}>Cancel</button>
-            <button type="button" className="btn btn-primary" onClick={() => confirmValues(true)}>Confirm</button>
+            <p></p>
+            <button type="button" className="btn btn-secondary" onClick={() => passUpValues(false)}>Cancel</button>
+            <button type="button" className="btn btn-primary" onClick={() => passUpValues(true)}>Confirm</button>
           </div>
         </div>
       </div>
@@ -46,9 +47,8 @@ function Confirmation(props){
 }
 
 Confirmation.propTypes = {
-  valuesToConfirm: PropTypes.array,
-  onWineConfirmed: PropTypes.func,
-  updateShowModal: PropTypes.func
-}
+  valuesToConfirm: PropTypes.obj,
+  onWineConfirmed: PropTypes.func
+};
 
 export default Confirmation;
