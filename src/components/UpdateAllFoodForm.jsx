@@ -1,53 +1,36 @@
 import React from 'react';
-import CheesePlatter from '../assets/images/cheesePlatter.jpg';
-import GoldfishBowl from '../assets/images/goldFishBowl.jpg';
-import ComboPlate from '../assets/images/comboPlate.jpg';
-import FruitPlatter from '../assets/images/fruitPlatter.jpg';
+import PropTypes from 'prop-types';
 import FoodForm from './FoodForm';
 
-function UpdateAllFoodForm(){
-  var foods = [
-    {
-      id: 1,
-      name: 'Cheese Platter',
-      price: '$5.99',
-      img: CheesePlatter
-    },
-    {
-      id: 2,
-      name: 'Goldfish Bowl',
-      price: '$3.49',
-      img: GoldfishBowl
-    },
-    {
-      id: 3,
-      name: 'Combo Plate',
-      price: '$7.25',
-      img: ComboPlate
-    },
-    {
-      id: 4,
-      name: 'Fruit Platter',
-      price: '$5.95',
-      img: FruitPlatter
-    }
-  ];
+function UpdateAllFoodForm(props){
   var text = {
     color: '#d1d1d1',
     marginTop: '20px',
     textAlign: 'center'
   };
+  function giveNextFoodId(){
+    console.log(props);
+    var maxFoodId = props.foodList.reduce((prev, curr) => {
+      return prev.id > curr.id ? prev : curr;
+    });
+    return maxFoodId.id + 1;
+  }
   return(
     <div>
       <div style={text}>
         <h2>Update Food Menu</h2>
         <button type="button" className='btn btn-primary'>Save Changes</button>
       </div>
-      {foods.map((item,index) =>
-        <FoodForm name={item.name} price={item.price} img={item.img} key={index} />
+      {props.foodList.map((item) =>
+        <FoodForm nameValue={item.name} priceValue={item.price} imgValue={item.img} key={item.id} idValue={item.id}/>
       )}
-      <FoodForm name={null} price={null} img={null} key={foods.length} />
+      <FoodForm nameValue={''} priceValue={''} imgValue={''} key={giveNextFoodId()} id={giveNextFoodId()} />
     </div>
   );
+}
+
+UpdateAllFoodForm.propTypes = {
+  onFoodUpdateSubmit: PropTypes.func,
+  foodList: PropTypes.array
 }
 export default UpdateAllFoodForm;

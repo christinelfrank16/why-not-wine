@@ -136,9 +136,11 @@ class App extends React.Component {
     this.props.history.push(path);
   }
 
-  handleNewFormSubmit(wineAndDetails, type){
+  handleNewFormSubmit(confirmedValues, type){
     if(type === 'wine'){
-      this.updateWineListHelper(wineAndDetails);
+      this.updateWineListHelper(confirmedValues);
+    } else if (type === 'food'){
+      console.log('confirmed in app');
     }
   }
 
@@ -205,7 +207,7 @@ class App extends React.Component {
           </Route>/>
           <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} foodList={this.state.foodList} />} />
           <Route exact path='/update-food'>
-            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl onFoodListConfirmed={this.handleNewFormSubmit}/>}  
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl foodList={this.state.foodList} onFoodListConfirmed={this.handleNewFormSubmit}/>}  
           </Route>
           <Route component={Error404} />
         </Switch>

@@ -16,17 +16,18 @@ function FoodForm(props){
   };
   return(
     <form style={formStyle}>
+      <input hidden type='text' value={props.idValue} />
       <div className="form-group">
         <label style={inputStyle} htmlFor="name">Name</label>
-        <input id="name" type="text" className="form-control" value={props.name}/>
+        <input id="name" type="text" className="form-control" value={props.nameValue}/>
       </div>
       <div className="form-group">
         <label style={inputStyle} htmlFor="price">Price</label>
-        <input id="price" type="text" className="form-control" value={props.price}/>
+        <input id="price" type="text" className="form-control" value={props.priceValue}/>
       </div>
       <div className="form-group">
         <label style={inputStyle} htmlFor="image">Image Url</label>
-        <input id="image" type="text" className="form-control" value={props.img}/>
+        <input id="image" type="text" className="form-control" value={props.imgValue}/>
       </div>
       <button style={buttonStyle} type="submit" className="btn btn-secondary">Update</button>
       <button type="button" className="btn btn-dark">Remove</button>
@@ -35,9 +36,10 @@ function FoodForm(props){
 }
 
 FoodForm.propTypes = {
-  img: PropTypes.string,
-  name: PropTypes.string,
-  price: PropTypes.string
+  imgValue: PropTypes.string,
+  nameValue: PropTypes.string,
+  priceValue: PropTypes.string,
+  idValue: PropTypes.number
 };
 
 export default FoodForm;
