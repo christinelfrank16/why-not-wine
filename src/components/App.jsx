@@ -121,6 +121,7 @@ class App extends React.Component {
     };
     this.handleUserPriviledgeUpdate = this.handleUserPriviledgeUpdate.bind(this);
     this.wineDetailObjectHelper = this.wineDetailObjectHelper.bind(this);
+    this.handleNewWineFormSubmit = this.handleNewWineFormSubmit.bind(this);
   }
 
   handleUserPriviledgeUpdate(newValue){
@@ -128,7 +129,32 @@ class App extends React.Component {
   }
 
   handleNewWineFormSubmit(wineAndDetails){
-    
+    var newWine = {};
+    var newDetails = {};
+    wineAndDetails.forEach((keyValue) => {
+      var keyList = Object.keys(this.state.wineList[0]);
+      if(keyList.includes(keyValue[0])){
+        newWine[keyValue[0]] = keyValue[1];
+      } else {
+        newDetails[keyValue[0]] = keyValue[1];
+      }
+    });
+    if(newWine.container === 'bottle'){
+      newWine.qty += " " + newWine.container;
+    } else {
+      newWine.qty += " oz";
+    }
+    var wineWithMaxId = this.state.wineList.reduce((prev, curr) => {return prev.id < curr.id ? prev : curr; });
+    newWine.id = wineWithMaxId.id +1;
+    this.state.wineList.push(newWine);
+
+    var wineDetailsWithMaxId = this.state.wineDetails.reduce((prev, curr) => { return prev.id < curr.id ? prev : curr; });
+    wineAndDetails[1].forEach((keyValue) => {
+      newDetails[keyValue[0]] = keyValue[1];
+    })
+    newDetails.id = wineDetailsWithMaxId.id +1;
+    newDetails.wineId = newWine.id;
+    this.state.wineDetails.push(newDetails);
   }
   
   wineDetailObjectHelper(id){
@@ -159,7 +185,7 @@ class App extends React.Component {
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} wineList={this.state.wineList} />}/>
           <Route exact path='/wine/:id' render={(routerProps) => <WineDetails selectedWine={this.wineDetailObjectHelper(routerProps.match.params.id).wine} selectedWineDetails={this.wineDetailObjectHelper(routerProps.match.params.id).wineDetails} wineFoods={this.wineDetailObjectHelper(routerProps.match.params.id).wineFoods} />} />
           <Route exact path='/new-wine'>
-            {!this.state.isAdmin ? <Redirect to='/notAuthorized'/> : <NewWineControl />}
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <NewWineControl onWineConfirmed={this.handleNewWineFormSubmit}/>}
           </Route>/>
           <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} foodList={this.state.foodList} />} />
           <Route exact path='/update-food'>

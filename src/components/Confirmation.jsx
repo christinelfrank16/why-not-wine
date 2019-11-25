@@ -18,7 +18,14 @@ function Confirmation(props){
 
   function passUpValues(doPassValues){
     if (doPassValues){
-      props.onWineConfirmed(props.valuesToConfirm);
+      var valuesToPass = [];
+      props.valuesToConfirm.map((wineAndDetails) => {
+        Object.keys(wineAndDetails).forEach((key) => {
+          valuesToPass.push([key, wineAndDetails[key].value])
+          wineAndDetails[key].value = '';
+        });
+      });
+      props.onWineConfirmed(valuesToPass);
       console.log('confirmed');
     } else {
       $('#confirm').modal('hide');
