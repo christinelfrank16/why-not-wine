@@ -154,6 +154,7 @@ class App extends React.Component {
     })
     newDetails.id = (Number(wineDetailsWithMaxId.id) +1).toString();
     newDetails.wineId = newWine.id;
+    newDetails.food = [];
     this.state.wineDetails.push(newDetails);
     console.log(this.state);
   }
