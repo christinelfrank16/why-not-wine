@@ -140,21 +140,22 @@ class App extends React.Component {
       }
     });
     if(newWine.container === 'bottle'){
-      newWine.qty += " " + newWine.container;
+      newWine.amountLeft += " " + newWine.container;
     } else {
-      newWine.qty += " oz";
+      newWine.amountLeft += " oz";
     }
-    var wineWithMaxId = this.state.wineList.reduce((prev, curr) => {return prev.id < curr.id ? prev : curr; });
-    newWine.id = wineWithMaxId.id +1;
+    var wineWithMaxId = this.state.wineList.reduce((prev, curr) => {return Number(prev.id) > Number(curr.id) ? prev : curr; });
+    newWine.id = (Number(wineWithMaxId.id) + 1).toString();
     this.state.wineList.push(newWine);
 
-    var wineDetailsWithMaxId = this.state.wineDetails.reduce((prev, curr) => { return prev.id < curr.id ? prev : curr; });
+    var wineDetailsWithMaxId = this.state.wineDetails.reduce((prev, curr) => { return Number(prev.id) > Number(curr.id) ? prev : curr; });
     wineAndDetails[1].forEach((keyValue) => {
       newDetails[keyValue[0]] = keyValue[1];
     })
-    newDetails.id = wineDetailsWithMaxId.id +1;
+    newDetails.id = (Number(wineDetailsWithMaxId.id) +1).toString();
     newDetails.wineId = newWine.id;
     this.state.wineDetails.push(newDetails);
+    console.log(this.state);
   }
   
   wineDetailObjectHelper(id){
