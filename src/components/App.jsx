@@ -122,8 +122,9 @@ class App extends React.Component {
     };
     this.handleUserPriviledgeUpdate = this.handleUserPriviledgeUpdate.bind(this);
     this.wineDetailObjectHelper = this.wineDetailObjectHelper.bind(this);
-    this.handleNewWineFormSubmit = this.handleNewWineFormSubmit.bind(this);
+    this.handleNewFormSubmit = this.handleNewFormSubmit.bind(this);
     this.routeChange = this.routeChange.bind(this);
+    this.updateWineListHelper = this.updateWineListHelper.bind(this);
   }
 
   handleUserPriviledgeUpdate(newValue){
@@ -135,23 +136,29 @@ class App extends React.Component {
     this.props.history.push(path);
   }
 
-  handleNewWineFormSubmit(wineAndDetails){
+  handleNewFormSubmit(wineAndDetails, type){
+    if(type === 'wine'){
+      this.updateWineListHelper(wineAndDetails);
+    }
+  }
+
+  updateWineListHelper(wineAndDetails){
     var newWine = {};
     var newDetails = {};
     wineAndDetails.forEach((keyValue) => {
       var keyList = Object.keys(this.state.wineList[0]);
-      if(keyList.includes(keyValue[0])){
+      if (keyList.includes(keyValue[0])) {
         newWine[keyValue[0]] = keyValue[1];
       } else {
         newDetails[keyValue[0]] = keyValue[1];
       }
     });
-    if(newWine.container === 'bottle'){
+    if (newWine.container === 'bottle') {
       newWine.amountLeft += ' ' + newWine.container;
     } else {
       newWine.amountLeft += ' oz';
     }
-    var wineWithMaxId = this.state.wineList.reduce((prev, curr) => {return Number(prev.id) > Number(curr.id) ? prev : curr; });
+    var wineWithMaxId = this.state.wineList.reduce((prev, curr) => { return Number(prev.id) > Number(curr.id) ? prev : curr; });
     newWine.id = (Number(wineWithMaxId.id) + 1).toString();
     this.state.wineList.push(newWine);
 
@@ -159,7 +166,7 @@ class App extends React.Component {
     wineAndDetails[1].forEach((keyValue) => {
       newDetails[keyValue[0]] = keyValue[1];
     });
-    newDetails.id = (Number(wineDetailsWithMaxId.id) +1).toString();
+    newDetails.id = (Number(wineDetailsWithMaxId.id) + 1).toString();
     newDetails.wineId = newWine.id;
     newDetails.food = [];
     this.state.wineDetails.push(newDetails);
@@ -194,11 +201,11 @@ class App extends React.Component {
           <Route exact path='/wine' render={() => <WinePage isAdmin={this.state.isAdmin} wineList={this.state.wineList} />}/>
           <Route exact path='/wine/:id' render={(routerProps) => <WineDetails selectedWine={this.wineDetailObjectHelper(routerProps.match.params.id).wine} selectedWineDetails={this.wineDetailObjectHelper(routerProps.match.params.id).wineDetails} wineFoods={this.wineDetailObjectHelper(routerProps.match.params.id).wineFoods} />} />
           <Route exact path='/new-wine'>
-            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <NewWineControl onWineConfirmed={this.handleNewWineFormSubmit}/>}
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <NewWineControl onWineConfirmed={this.handleNewFormSubmit}/>}
           </Route>/>
           <Route exact path='/food' render={() => <FoodPage isAdmin={this.state.isAdmin} foodList={this.state.foodList} />} />
           <Route exact path='/update-food'>
-            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl />}  
+            {!this.state.isAdmin ? <Redirect to='/notAuthorized' /> : <UpdateFoodControl onFoodListConfirmed={this.handleNewFormSubmit}/>}  
           </Route>
           <Route component={Error404} />
         </Switch>

@@ -20,13 +20,13 @@ function Confirmation(props){
   function passUpValues(doPassValues){
     if (doPassValues){
       var valuesToPass = [];
-      props.valuesToConfirm.map((wineAndDetails) => {
-        Object.keys(wineAndDetails).forEach((key) => {
-          valuesToPass.push([key, wineAndDetails[key].value]);
-          wineAndDetails[key].value = '';
+      props.valuesToConfirm.map((objValues) => {
+        Object.keys(objValues).forEach((key) => {
+          valuesToPass.push([key, objValues[key].value]);
+          objValues[key].value = '';
         });
       });
-      props.onWineConfirmed(valuesToPass);
+      props.onValuesConfirmed(valuesToPass, props.type);
       $('#confirm').modal('hide');
     } else {
       $('#confirm').modal('hide');
@@ -57,7 +57,8 @@ function Confirmation(props){
 
 Confirmation.propTypes = {
   valuesToConfirm: PropTypes.obj,
-  onWineConfirmed: PropTypes.func
+  onValuesConfirmed: PropTypes.func,
+  type: PropTypes.string
 };
 
 export default Confirmation;

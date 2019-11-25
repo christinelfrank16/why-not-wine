@@ -15,7 +15,7 @@ function NewWineControl(props) {
   return (
     <div className='container'>
       <NewWineForm onNewWineCreation={handleNewWineInfoForConfirm}/>
-      <Confirmation valuesToConfirm={confirmValues === null ? [{}] : confirmValues} onWineConfirmed={props.onWineConfirmed}/>
+      <Confirmation type='wine' valuesToConfirm={confirmValues === null ? [{}] : confirmValues} onValuesConfirmed={props.onWineConfirmed}/>
     </div>
   );
 }
