@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import $ from 'jquery';
 
 function Confirmation(props){
+
   function confirmValues(){
     if(props.valuesToConfirm != null){
       $('.modal-body p').text('');
@@ -26,11 +27,13 @@ function Confirmation(props){
         });
       });
       props.onWineConfirmed(valuesToPass);
+      $('#confirm').modal('hide');
       console.log('confirmed');
     } else {
       $('#confirm').modal('hide');
     }
   }
+
   return(
     <div className="modal fade" id="confirm" role="dialog" aria-labelledby="confirmTitle" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">

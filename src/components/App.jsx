@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 import WinePage from './WinePage';
@@ -122,10 +122,16 @@ class App extends React.Component {
     this.handleUserPriviledgeUpdate = this.handleUserPriviledgeUpdate.bind(this);
     this.wineDetailObjectHelper = this.wineDetailObjectHelper.bind(this);
     this.handleNewWineFormSubmit = this.handleNewWineFormSubmit.bind(this);
+    this.routeChange = this.routeChange.bind(this);
   }
 
   handleUserPriviledgeUpdate(newValue){
     this.setState({ isAdmin: newValue.target.checked});
+  }
+
+  routeChange(pathToGoTo) {
+    let path = `${pathToGoTo}`;
+    this.props.history.push(path);
   }
 
   handleNewWineFormSubmit(wineAndDetails){
@@ -157,6 +163,7 @@ class App extends React.Component {
     newDetails.food = [];
     this.state.wineDetails.push(newDetails);
     console.log(this.state);
+    this.routeChange('\wine');
   }
   
   wineDetailObjectHelper(id){
@@ -200,4 +207,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
