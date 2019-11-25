@@ -8,7 +8,6 @@ function NewWineControl(props) {
   const [confirmValues, setValues] = useState([]);
 
   function handleNewWineInfoForConfirm(newWineObj){
-    console.log(newWineObj);
     setValues(newWineObj);
     $('#confirm').modal('show');
   }

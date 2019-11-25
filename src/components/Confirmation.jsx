@@ -22,13 +22,12 @@ function Confirmation(props){
       var valuesToPass = [];
       props.valuesToConfirm.map((wineAndDetails) => {
         Object.keys(wineAndDetails).forEach((key) => {
-          valuesToPass.push([key, wineAndDetails[key].value])
+          valuesToPass.push([key, wineAndDetails[key].value]);
           wineAndDetails[key].value = '';
         });
       });
       props.onWineConfirmed(valuesToPass);
       $('#confirm').modal('hide');
-      console.log('confirmed');
     } else {
       $('#confirm').modal('hide');
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Home from './Home';
 import WinePage from './WinePage';
@@ -146,9 +147,9 @@ class App extends React.Component {
       }
     });
     if(newWine.container === 'bottle'){
-      newWine.amountLeft += " " + newWine.container;
+      newWine.amountLeft += ' ' + newWine.container;
     } else {
-      newWine.amountLeft += " oz";
+      newWine.amountLeft += ' oz';
     }
     var wineWithMaxId = this.state.wineList.reduce((prev, curr) => {return Number(prev.id) > Number(curr.id) ? prev : curr; });
     newWine.id = (Number(wineWithMaxId.id) + 1).toString();
@@ -157,13 +158,12 @@ class App extends React.Component {
     var wineDetailsWithMaxId = this.state.wineDetails.reduce((prev, curr) => { return Number(prev.id) > Number(curr.id) ? prev : curr; });
     wineAndDetails[1].forEach((keyValue) => {
       newDetails[keyValue[0]] = keyValue[1];
-    })
+    });
     newDetails.id = (Number(wineDetailsWithMaxId.id) +1).toString();
     newDetails.wineId = newWine.id;
     newDetails.food = [];
     this.state.wineDetails.push(newDetails);
-    console.log(this.state);
-    this.routeChange('\wine');
+    this.routeChange('/wine');
   }
   
   wineDetailObjectHelper(id){
@@ -206,5 +206,9 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  history: PropTypes.object
+};
 
 export default withRouter(App);
