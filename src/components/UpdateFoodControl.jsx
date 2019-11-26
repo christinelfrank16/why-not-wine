@@ -23,6 +23,6 @@ function UpdateFoodControl(props) {
 UpdateFoodControl.propTypes = {
   onFoodListConfirmed: PropTypes.func,
   foodList: PropTypes.array
-}
+};
 
 export default UpdateFoodControl;
